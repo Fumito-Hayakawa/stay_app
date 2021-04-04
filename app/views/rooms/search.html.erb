@@ -1,0 +1,27 @@
+
+<div class="container-fluid room">
+  <h4 class="pb-4">検索結果：<%= @results_cnt %>件</h4>
+  
+<div class="row">
+  <% @results.each do |room| %>
+  <div class="col-sm-6 col-lg-4 col-xl-3">
+    <div class="room-frame-inner">
+    <%= link_to room do %>
+    <!--#renderを繰り返し出力する-->
+        <div class="room-image-out">
+        <%= image_tag room.image.variant(resize:'200x200').processed, class:"room-image" %>
+        </div>
+        <div class="room-profile">
+        <p class="room-profile-name"><%= room.name %></p>
+        <br>
+        <p class="room-profile-city"><%= room.address %></p>
+        <br>
+        <p class="room-profile-price price-icon"><%= room.price %></p>
+        </div>
+    </div>
+  </div>
+  <% end %>
+
+  <% end %>
+</div>
+</div>

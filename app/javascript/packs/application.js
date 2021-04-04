@@ -11,3 +11,17 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+// bootstrap導入のため以下記載
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
+
+// 以下https://qiita.com/rhistoba/items/f724dae231d7e28bf477
+import 'bootstrap'
+import '../src/application.scss'
+
+function start() {
+  $(".header-nav-menu").addClass('d-none');
+}
