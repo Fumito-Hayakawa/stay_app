@@ -20,13 +20,17 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick', '~> 4.8'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'rails-i18n'
+gem 'pry-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,3 +58,15 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'bootstrap'
+gem "bootstrap-sass", "~>3.3.6"
+gem 'jquery-rails'
+gem "jquery-ui-rails"
+
+gem 'ransack'
+
+# font-awesomeを使用
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
+
+gem 'rails-i18n'

@@ -8,9 +8,66 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application' %>
   </head>
 
   <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-left-nav">
+          <%= link_to image_tag("logo.png"), "/" %>
+          <%= search_form_for @q, url: search_rooms_path do |f| %>
+          <div class="header-sharch d-lg-inline-block d-none">
+            <%= f.search_field :address_cont, placeholder: "エリア", class:"form-control" %>
+            <!--<i class="fas fa-map-marker-alt"></i>-->
+          </div>
+          <div class="header-sharch d-lg-inline-block d-none">
+            <%= f.search_field :name_or_introduction_cont, placeholder: "キーワード", class:"form-control" %>
+            <!--<i class="fas fa-search"></i>-->
+          </div>
+          <%= f.submit '検索', class:"d-none" %>
+          <% end %>
+        </div>
+
+        <div class="header-right-nav">
+ 
+        <% if session[:user_id] %>
+          <div class="nav-item inline-block">
+              <%= current_user.name %>
+          </div>
+          <div class="nav-item">
+            <% if current_user.image.attached? %>
+            <label for="btn">
+            <%= image_tag current_user.image.variant(resize:'200x200').processed, class:"icon-image host-icon" %>
+            </label>
+            <input type="checkbox" id="btn">
+            <% else %>
+            <label for="btn"><img alt="アイコン画像" class="icon-image host-icon" src="../../assets/default_icon.jpg"></label>
+            <input type="checkbox" id="btn">
+            <% end %>            
+            <ul class="header-nav-menu">
+            <li><%= link_to "ルーム登録", :new_room %></li>
+            <li><%= link_to "予約済ルーム一覧", reservations_path %></li>
+            <li><%= link_to "登録済ルーム一覧", "/rooms/posts" %></li>
+            <!--以下users/profileでなぜshowアクションができるのか不明-->
+            <li><%= link_to "設定", "/users/profile" %></li>
+            <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+            </ul>
+
+          </div>
+        <% else %>
+          <div class="nav-item">
+            <%= link_to "ログイン", login_path, class:"btn btn-primary my-2 mx-3" %>
+            <%= link_to "登録する", :new_user, class:"btn btn-secondary btn-radius" %>
+          </div>
+        <% end %>
+      </div>
+      </div>
+    </header>
     <%= yield %>
+    <footer class="footer">
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
   </body>
 </html>

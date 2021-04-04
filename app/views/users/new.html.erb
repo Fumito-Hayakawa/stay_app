@@ -1,0 +1,35 @@
+<div class="container device">
+    <div class="frame">
+        <p class="my-4">新しいアカウントを作成</p>            
+        <%= render "shared/error", obj: @user %>　<!--ここを追加する-->
+        <div class="device-inner">
+        <%= form_with scope: :user, class:"new-user", local: true do |f| %>
+        <div class="field form-row">
+            <div class="col-2 required-b pt-2">
+            </div>
+            <%= f.text_field :name, class: "form-control col-10 px-2", placeholder: "ユーザー名" %>
+        </div>
+        <div class="field form-row">
+            <div class="col-2 required-b pt-2">
+            </div>
+            <%= f.text_field :email, class: "form-control col-10 px-2", placeholder: "メールアドレス" %>
+        </div>
+        <div class="field form-row">
+            <div class="col-2 required-b pt-2">
+            </div>
+            <%= f.text_field :password, class: "form-control col-10 px-2", placeholder: "パスワード" %>        
+        </div>
+        <div class="field form-row">
+            <div class="col-2 required-b pt-2">
+            </div>
+            <%= f.text_field :password_confirmation, class: "form-control col-10 px-2", placeholder: "パスワード確認" %>
+        </div>
+        <div class="actions">
+        <%= f.submit "登録完了する", class:"form-control btn-primary my-4" %>
+        </div>
+        <% end %>
+        <%= link_to "ユーザー情報一覧に戻る", :users %>
+        <br>
+        </div>
+    </div>
+</div>
